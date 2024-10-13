@@ -22,11 +22,31 @@ require_once "database.php";
 $filePath = BASEURL.'/diary.txt';
 $fileContents = file_get_contents($filePath);
 ?>
+    <style>
+        #editable-textarea {
+            width: 50%;
+            min-height: 50px;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: none;
+            overflow: hidden;
+        }
+    </style>
     <form action="controller.php" method="post">
         <input type="hidden" name="controller" value="diary">
-        <textarea name="updating_file" rows="4" cols="50" required><?php echo $fileContents;?></textarea><br><br>
+        <textarea id="editable-textarea" name="updating_file" required><?php echo $fileContents;?></textarea><br><br>
         <input type="submit" name="submit_edit_diary" value="Save">
     </form>
+    <script>
+    function autoResize() {
+        const textarea = document.getElementById('editable-textarea');
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+    }
+    document.addEventListener('DOMContentLoaded', autoResize);
+    document.getElementById('editable-textarea').addEventListener('input', autoResize);
+    </script>
 
 </body>
 </html>
