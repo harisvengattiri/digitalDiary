@@ -19,4 +19,14 @@ function handleDiary() {
             exit();
         }
     }
+    if (isset($_REQUEST['submit_edit_diary'])) {
+        try {
+            edit_diary($_REQUEST);
+            header('Location: '.BASEURL.'?status=success');
+            exit();
+        } catch (Exception $e) {
+            header('Location: '.BASEURL.'?status=failed');
+            exit();
+        }
+    }
 }

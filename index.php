@@ -16,27 +16,15 @@
         <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
 
         <input type="submit" name="submit_add_diary" value="Save">
-    </form>
-
-<style>
-#editableDiv {
-    width: 80%;
-    height: 400px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    overflow-y: scroll;
-}
-</style>
+    </form><br><br>
 <?php
 require_once "database.php";
 $filePath = BASEURL.'/diary.txt';
 $fileContents = file_get_contents($filePath);
 ?>
     <form action="controller.php" method="post">
-    <input type="hidden" name="controller" value="diary">
-        <div id="editableDiv" contenteditable="true">
-            <?php echo "<pre>".htmlspecialchars($fileContents)."</pre>";?>
-        </div>
+        <input type="hidden" name="controller" value="diary">
+        <textarea name="updating_file" rows="4" cols="50" required><?php echo $fileContents;?></textarea><br><br>
         <input type="submit" name="submit_edit_diary" value="Save">
     </form>
 
