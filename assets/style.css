@@ -1,0 +1,9 @@
+#editable-textarea {
+    width: 30%;
+    min-height: 50px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    resize: none;
+    overflow: hidden;
+}

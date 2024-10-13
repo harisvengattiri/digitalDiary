@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js"></script>
     <title>Digital Diary</title>
 </head>
 <body>
@@ -22,31 +24,10 @@ require_once "database.php";
 $filePath = BASEURL.'/diary.txt';
 $fileContents = file_get_contents($filePath);
 ?>
-    <style>
-        #editable-textarea {
-            width: 30%;
-            min-height: 50px;
-            padding: 10px;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            resize: none;
-            overflow: hidden;
-        }
-    </style>
     <form action="controller.php" method="post">
         <input type="hidden" name="controller" value="diary">
         <textarea id="editable-textarea" name="updating_file" required><?php echo $fileContents;?></textarea><br><br>
         <input type="submit" name="submit_edit_diary" value="Change Diary">
     </form>
-    <script>
-    function autoResize() {
-        const textarea = document.getElementById('editable-textarea');
-        textarea.style.height = 'auto';
-        textarea.style.height = textarea.scrollHeight + 'px';
-    }
-    document.addEventListener('DOMContentLoaded', autoResize);
-    document.getElementById('editable-textarea').addEventListener('input', autoResize);
-    </script>
-
 </body>
 </html>
