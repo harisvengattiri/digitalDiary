@@ -12,10 +12,10 @@ function handleDiary() {
     if (isset($_REQUEST['submit_add_diary'])) {
         try {
             add_diary($_REQUEST);
-            header('Location: http://localhost/digitalDiary?status=success');
+            header('Location: '.BASEURL.'?status=success');
             exit();
         } catch (Exception $e) {
-            header('Location: http://localhost/digitalDiary?status=failed');
+            header('Location: '.BASEURL.'?status=failed');
             exit();
         }
     }
