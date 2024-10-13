@@ -15,7 +15,7 @@
         <label for="message">Message:</label><br>
         <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
 
-        <input type="submit" name="submit_add_diary" value="Save">
+        <input type="submit" name="submit_add_diary" value="Add To Diary">
     </form><br><br>
 <?php
 require_once "database.php";
@@ -24,7 +24,7 @@ $fileContents = file_get_contents($filePath);
 ?>
     <style>
         #editable-textarea {
-            width: 50%;
+            width: 30%;
             min-height: 50px;
             padding: 10px;
             font-family: Arial, sans-serif;
@@ -36,7 +36,7 @@ $fileContents = file_get_contents($filePath);
     <form action="controller.php" method="post">
         <input type="hidden" name="controller" value="diary">
         <textarea id="editable-textarea" name="updating_file" required><?php echo $fileContents;?></textarea><br><br>
-        <input type="submit" name="submit_edit_diary" value="Save">
+        <input type="submit" name="submit_edit_diary" value="Change Diary">
     </form>
     <script>
     function autoResize() {
