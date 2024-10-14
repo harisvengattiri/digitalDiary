@@ -17,7 +17,10 @@ $fileContents = file_get_contents($filePath);
     <form action="controller.php" method="post">
         <input type="hidden" name="controller" value="diary">
         <textarea id="editable-textarea" name="updating_file" required><?php echo $fileContents;?></textarea><br><br>
+
+        <input type="submit" name="prev_diary" value="prev">
         <input type="submit" name="save_diary" value="save">
+        <input type="submit" name="next_diary" value="next">
     </form>
 </body>
 </html>
