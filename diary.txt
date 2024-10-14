@@ -1,11 +1,14 @@
-Title: Sample 1234
-Message: This is a sample data
+Title: step 1
+Message: 3 button
 
-Title: Haris
-Message: Haris is doing his work
+Title: step 2
+Message: write to file
 
-Title: Aslam
-Message: He is also doing his work
+Title: step 3
+Message: on next [next_page] attach
 
-Title: Binu Harsha
-Message: She is in her home
+Title: step 4
+Message: did not show delimiter
+
+Title: step 5
+Message: page number as parameter on next
