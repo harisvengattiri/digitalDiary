@@ -19,4 +19,15 @@ function handleDiary() {
             exit();
         }
     }
+
+    if (isset($_REQUEST['next_diary'])) {
+        try {
+            $page = nextPage();
+            header('Location: '.BASEURL.'?page='.$page);
+            exit();
+        } catch (Exception $e) {
+            header('Location: '.BASEURL.'?status=failed');
+            exit();
+        }
+    }
 }

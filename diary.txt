@@ -11,4 +11,4 @@ Title: step 4
 Message: did not show delimiter
 
 Title: step 5
-Message: page number as parameter on next
+Message: page number as parameter on next[next_page]
