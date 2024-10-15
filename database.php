@@ -13,28 +13,19 @@ function save_diary() {
 
 function nextPage() {
     $current_page = $_POST['current_page'];
-
-    checkForDelimiter($current_page);
+    checkNextPageExists($current_page);
     $page = $current_page+1;
     return $page;
 }
 
-function checkForDelimiter($current_page) {
+function checkNextPageExists($current_page) {
     global $file;
     global $delimiter;
 
     $fileContents = file_get_contents($file);
     $pages = explode($delimiter, $fileContents);
 
-    $finalPages = [];
-    foreach ($pages as $index => $page) {
-        if (trim($page) !== '') {
-            $finalPages[] = trim($page) . $delimiter;
-        }
-    }
-
-    $page_index = $finalPages[$current_page-1];
-    if(!strpos($page_index, $delimiter)) {
+    if (!isset($pages[$current_page])) {
         add_delimiter();
     }
 }
