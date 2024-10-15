@@ -32,9 +32,9 @@ $page_data = $pages[$current_page-1];
         <input type="hidden" name="controller" value="diary">
         <input type="hidden" name="current_page" value="<?php echo $current_page;?>">
 
-        <input type="submit" name="prev_diary" value="prev">
+        <input type="submit" name="prev_page" value="prev">
         <input type="submit" name="save_diary" value="save">
-        <input type="submit" name="next_diary" value="next">
+        <input type="submit" name="next_page" value="next">
     </form>
 
 <?php

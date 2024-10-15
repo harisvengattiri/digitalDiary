@@ -20,7 +20,7 @@ function handleDiary() {
         }
     }
 
-    if (isset($_REQUEST['next_diary'])) {
+    if (isset($_REQUEST['next_page'])) {
         try {
             $page = nextPage();
             header('Location: '.BASEURL.'?page='.$page);
