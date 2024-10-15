@@ -17,7 +17,6 @@ $fileContents = file_get_contents($filePath);
 
 $delimiter = '[next_page]';
 $pages = explode($delimiter, $fileContents);
-// $rejoinedContent = implode($delimiter, $pages);
 $total_pages = count($pages);
 
 if(isset($_GET['page'])) {
@@ -25,10 +24,11 @@ if(isset($_GET['page'])) {
 } else {
     $current_page = 1;
 }
-$page_data = $pages[$current_page-1];
+$page_index = $current_page-1;
+$page_data = $pages[$page_index];
 ?>
     <form action="controller.php" method="post">
-        <textarea id="editable-textarea" name="updating_file" required><?php echo $page_data;?></textarea><br><br>
+        <textarea id="editable-textarea" name="updating_file"><?php echo $page_data;?></textarea><br><br>
         <input type="hidden" name="controller" value="diary">
         <input type="hidden" name="current_page" value="<?php echo $current_page;?>">
 
@@ -36,10 +36,5 @@ $page_data = $pages[$current_page-1];
         <input type="submit" name="save_diary" value="save">
         <input type="submit" name="next_page" value="next">
     </form>
-
-<?php
-    var_dump($pages);
-?>
-
 </body>
 </html>
