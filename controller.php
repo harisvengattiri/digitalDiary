@@ -23,7 +23,8 @@ function handleDiary() {
 
     if (isset($_REQUEST['next_page'])) {
         try {
-            $page = nextPage();
+            $current_page = $_POST['current_page'];
+            $page = nextPage($current_page);
             header('Location: '.BASEURL.'?page='.$page);
             exit();
         } catch (Exception $e) {
@@ -34,7 +35,8 @@ function handleDiary() {
 
     if (isset($_REQUEST['prev_page'])) {
         try {
-            $page = prevPage();
+            $current_page = $_POST['current_page'];
+            $page = prevPage($current_page);
             header('Location: '.BASEURL.'?page='.$page);
             exit();
         } catch (Exception $e) {

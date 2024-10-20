@@ -20,15 +20,13 @@ function saveDiary() {
     file_put_contents($file, $new_file);
 }
 
-function nextPage() {
-    $current_page = $_POST['current_page'];
+function nextPage($current_page) {
     checkNextPageExists($current_page);
     $page = $current_page+1;
     return $page;
 }
 
-function prevPage() {
-    $current_page = $_POST['current_page'];
+function prevPage($current_page) {
     checkPrevPageExists($current_page);
     $page = $current_page-1;
     return $page;
