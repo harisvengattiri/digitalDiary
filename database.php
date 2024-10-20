@@ -3,7 +3,7 @@ define('BASEURL', 'http://localhost/digitalDiary');
 $file = 'diary.txt';
 $delimiter = '[next_page]';
 
-function save_diary() {
+function saveDiary() {
     global $file;
     global $delimiter;
 
@@ -54,11 +54,11 @@ function checkNextPageExists($current_page) {
     $pages = explode($delimiter, $fileContents);
 
     if (!isset($pages[$current_page])) {
-        add_delimiter();
+        addDelimiter();
     }
 }
 
-function add_delimiter() {
+function addDelimiter() {
     global $file;
     global $delimiter;
 
