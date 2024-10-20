@@ -21,21 +21,24 @@ function saveDiary() {
 }
 
 function nextPage($current_page) {
-    checkNextPageExists($current_page);
+    global $file;
+    global $delimiter;
+
+    checkNextPageExists($current_page,$file,$delimiter);
     $page = $current_page+1;
     return $page;
 }
 
 function prevPage($current_page) {
-    checkPrevPageExists($current_page);
+    global $file;
+    global $delimiter;
+
+    checkPrevPageExists($current_page,$file,$delimiter);
     $page = $current_page-1;
     return $page;
 }
 
-function checkPrevPageExists($current_page) {
-    global $file;
-    global $delimiter;
-
+function checkPrevPageExists($current_page,$file,$delimiter) {
     $fileContents = file_get_contents($file);
     $pages = explode($delimiter, $fileContents);
 
@@ -44,21 +47,15 @@ function checkPrevPageExists($current_page) {
     }  
 }
 
-function checkNextPageExists($current_page) {
-    global $file;
-    global $delimiter;
-
+function checkNextPageExists($current_page,$file,$delimiter) {
     $fileContents = file_get_contents($file);
     $pages = explode($delimiter, $fileContents);
 
     if (!isset($pages[$current_page])) {
-        addDelimiter();
+        addDelimiter($file,$delimiter);
     }
 }
 
-function addDelimiter() {
-    global $file;
-    global $delimiter;
-
+function addDelimiter($file,$delimiter) {
     file_put_contents($file, $delimiter, FILE_APPEND);
 }
