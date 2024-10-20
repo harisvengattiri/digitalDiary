@@ -1,6 +1,5 @@
 <?php
-require_once "config.php";
-
+define('BASEURL', 'http://localhost/digitalDiary');
 $file = 'diary.txt';
 $delimiter = '[next_page]';
 
