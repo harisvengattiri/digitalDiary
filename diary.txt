@@ -12,4 +12,4 @@ ItemName quantity
 spare parts
 
 Garage Management
-veh maintanance or service spareParts[next_page]This is the third Page[next_page]This is the fourth page[next_page]
+veh maintanance or service spareParts[next_page]This is the third Page[next_page]This is the fourth page[next_page]This is the fifth page of diary[next_page]
