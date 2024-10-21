@@ -3,14 +3,12 @@ define('BASEURL', 'http://localhost/digitalDiary');
 $file = 'diary.txt';
 $delimiter = '[next_page]';
 
-function saveDiary() {
+function saveDiary($current_page) {
     global $file;
     global $delimiter;
 
     $fileContents = file_get_contents($file);
     $pages = explode($delimiter, $fileContents);
-
-    $current_page = $_POST['current_page'];
     $updated_page = htmlspecialchars($_POST['updating_file']);
 
     $page_index = $current_page-1;

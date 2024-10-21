@@ -11,8 +11,8 @@ switch ($controller) {
 function handleDiary() {
     if (isset($_REQUEST['save_diary'])) {
         try {
-            saveDiary($_REQUEST);
             $current_page = $_POST['current_page'];
+            saveDiary($current_page);
             header('Location: '.BASEURL.'?page='.$current_page);
             exit();
         } catch (Exception $e) {
