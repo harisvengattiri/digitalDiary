@@ -3,13 +3,29 @@ define('BASEURL', 'http://localhost/digitalDiary');
 define('DIARY_FILE', 'diary.txt');
 define('DELIMITER', '[next_page]');
 
-function saveDiary($current_page, $updated_file, $file = DIARY_FILE, $delimiter = DELIMITER) {
+function saveDiary($current_page, $updated_file) {
+    
+    $updated_page = htmlspecialchars($updated_file);
+    $processed_page = processPage($current_page, $file = DIARY_FILE, $delimiter = DELIMITER);
+    
+    $pages = $processed_page['pages'];
+    $updating_index = $processed_page['updating_index'];
+    $pages[$updating_index] = $updated_page;
+
+    updateProcessedPage($pages, $file, $delimiter);
+}
+
+function processPage($current_page, $file, $delimiter) {
     $fileContents = file_get_contents($file);
     $pages = explode($delimiter, $fileContents);
-    $updated_page = htmlspecialchars($updated_file);
-
     $page_index = $current_page-1;
-    $pages[$page_index] = $updated_page;
+    return [
+        'updating_index' => $page_index,
+        'pages' => $pages
+    ];
+}
+
+function updateProcessedPage($pages, $file, $delimiter) {
     $new_file = implode($delimiter, $pages);
     file_put_contents($file, $new_file);
 }
