@@ -3,10 +3,10 @@ define('BASEURL', 'http://localhost/digitalDiary');
 define('DIARY_FILE', 'diary.txt');
 define('DELIMITER', '[next_page]');
 
-function saveDiary($current_page, $updated_file) {
+function saveDiary($updated_file) {
     
     $updated_page = htmlspecialchars($updated_file);
-    $processed_page = processPage($current_page, $file = DIARY_FILE, $delimiter = DELIMITER);
+    $processed_page = processPage($_POST['current_page'], $file = DIARY_FILE, $delimiter = DELIMITER);
     
     $pages = $processed_page['pages'];
     $updating_index = $processed_page['updating_index'];
