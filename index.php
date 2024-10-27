@@ -11,7 +11,7 @@
 <h2>Digital Diary</h2>
 <?php
 require_once "diary.php";
-$filePath = BASEURL.'/diary.txt';
+$filePath = DIARY_FILE;
 $fileContents = file_get_contents($filePath);
 
 
