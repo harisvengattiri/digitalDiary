@@ -32,13 +32,13 @@ function updateProcessedPage($pages) {
     file_put_contents(DIARY_FILE, $new_file);
 }
 
-function nextPage($current_page) {
+function goToNextPage($current_page) {
     checkNextPageExists($current_page);
     $page = $current_page+1;
     return $page;
 }
 
-function prevPage($current_page) {
+function goToPreviousPage($current_page) {
     checkPrevPageExists($current_page);
     $page = $current_page-1;
     return $page;

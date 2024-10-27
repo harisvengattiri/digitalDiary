@@ -14,15 +14,15 @@ spare parts
 Garage Management
 veh maintanance or service spareParts[next_page]Database to Diary.php
 
-function saveDiary($updated_file) { to contend
+function saveDiary($updated_file) { to contend     DONE
 
-file can be taken as constend
+file can be taken as constend      DONE
 
 file to file with path
 
 diary path outside application
 
-$_POST[&#039;current_page&#039;] to function
+$_POST[&#039;current_page&#039;] to function     DONE
 
 contend of index page as function
 
@@ -30,6 +30,6 @@ while adding a page make delimiter not on next
 
 delete a page
 
-goto next and pre page
+goto next and pre page  DONE
 
-diary.txt .gitignore[next_page][next_page][next_page][next_page]
+diary.txt .gitignore[next_page][next_page][next_page][next_page][next_page][next_page]
