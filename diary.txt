@@ -12,4 +12,24 @@ ItemName quantity
 spare parts
 
 Garage Management
-veh maintanance or service spareParts[next_page]This is the third Page OK[next_page]This is the fourth page OK[next_page]This is the fifth page of diary[next_page]you should understand that
+veh maintanance or service spareParts[next_page]Database to Diary.php
+
+function saveDiary($updated_file) { to contend
+
+file can be taken as constend
+
+file to file with path
+
+diary path outside application
+
+$_POST[&#039;current_page&#039;] to function
+
+contend of index page as function
+
+while adding a page make delimiter not on next
+
+delete a page
+
+goto next and pre page
+
+diary.txt .gitignore[next_page][next_page][next_page][next_page]

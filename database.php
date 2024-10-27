@@ -1,16 +1,20 @@
 <?php
 require_once "config.php";
 
-function saveDiary($updated_file) {
+function saveDiary($contend) {
     
-    $updated_page = htmlspecialchars($updated_file);
-    $processed_page = processPage($_POST['current_page']);
+    $contend = htmlspecialchars($contend);
+    $processed_page = processPage(getCurrentPage());
     
     $pages = $processed_page['pages'];
     $updating_index = $processed_page['updating_index'];
-    $pages[$updating_index] = $updated_page;
+    $pages[$updating_index] = $contend;
 
     updateProcessedPage($pages);
+}
+
+function getCurrentPage() {
+    return $_POST['current_page'];
 }
 
 function processPage($current_page) {
