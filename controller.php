@@ -1,5 +1,5 @@
 <?php
-require_once("database.php");
+require_once("diary.php");
 
 $controller = $_REQUEST['controller'];
 switch ($controller) {

@@ -10,7 +10,7 @@
 <body>
 <h2>Digital Diary</h2>
 <?php
-require_once "database.php";
+require_once "diary.php";
 $filePath = BASEURL.'/diary.txt';
 $fileContents = file_get_contents($filePath);
 
