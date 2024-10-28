@@ -1,35 +1,52 @@
 <?php
 require_once "config.php";
 
-function saveDiary($content) {
-    
-    $content = htmlspecialchars($content);
-    $processed_page = processPage(getCurrentPage());
-    
-    $pages = $processed_page['pages'];
-    $updating_index = $processed_page['updating_index'];
-    $pages[$updating_index] = $content;
+function updatePostedContentToDiaryPages() {
+    $pages = getDiaryPages();
+    $page_index = getPageIndex(getCurrentPage());
+    $pages[$page_index] = getPostedContent();
+    $updated_content = prepareDiaryContent($pages);
+    saveDiary($updated_content);
+}
 
-    updateProcessedPage($pages);
+function getDiaryPages() {
+    $fileContents = file_get_contents(DIGITAL_DIARY_FILE);
+    $pages = explode(DELIMITER, $fileContents);
+    return $pages;
+}
+
+function getPageIndex($current_page) {
+    return $current_page-1;
 }
 
 function getCurrentPage() {
     return $_POST['current_page'];
 }
 
-function processPage($current_page) {
-    $fileContents = file_get_contents(DIGITAL_DIARY_FILE);
-    $pages = explode(DELIMITER, $fileContents);
-    $page_index = $current_page-1;
-    return [
-        'updating_index' => $page_index,
-        'pages' => $pages
-    ];
+function getPostedContent() {
+    return htmlspecialchars($_POST['updating_file']);
 }
 
-function updateProcessedPage($pages) {
-    $new_file = implode(DELIMITER, $pages);
-    file_put_contents(DIGITAL_DIARY_FILE, $new_file);
+function prepareDiaryContent($pages) {
+    return implode(DELIMITER, $pages);
+}
+
+function saveDiary($updated_content) {
+    file_put_contents(DIGITAL_DIARY_FILE, $updated_content);
+}
+
+function getDiaryPageData($current_page) {
+    $pages = getDiaryPages();
+    $page_index = getPageIndex($current_page);
+    return $pages[$page_index];
+}
+
+function getPageNumber() {
+    if(isset($_GET['page'])) {
+        return $_GET['page'];
+    } else {
+        return 1;
+    }
 }
 
 function goToNextPage($current_page) {

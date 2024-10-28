@@ -11,21 +11,8 @@
 <h2>Digital Diary</h2>
 <?php
 require_once "diary.php";
-$filePath = DIGITAL_DIARY_FILE;
-$fileContents = file_get_contents($filePath);
-
-
-$delimiter = '[next_page]';
-$pages = explode($delimiter, $fileContents);
-$total_pages = count($pages);
-
-if(isset($_GET['page'])) {
-    $current_page = $_GET['page'];
-} else {
-    $current_page = 1;
-}
-$page_index = $current_page-1;
-$page_data = $pages[$page_index];
+$current_page = getPageNumber();
+$page_data = getDiaryPageData($current_page);
 ?>
     <form action="controller.php" method="post">
         <textarea id="editable-textarea" name="updating_file"><?php echo $page_data;?></textarea><br><br>
