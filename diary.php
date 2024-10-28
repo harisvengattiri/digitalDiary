@@ -18,7 +18,7 @@ function getCurrentPage() {
 }
 
 function processPage($current_page) {
-    $fileContents = file_get_contents(DIARY_FILE);
+    $fileContents = file_get_contents(DIGITAL_DIARY_FILE);
     $pages = explode(DELIMITER, $fileContents);
     $page_index = $current_page-1;
     return [
@@ -29,7 +29,7 @@ function processPage($current_page) {
 
 function updateProcessedPage($pages) {
     $new_file = implode(DELIMITER, $pages);
-    file_put_contents(DIARY_FILE, $new_file);
+    file_put_contents(DIGITAL_DIARY_FILE, $new_file);
 }
 
 function goToNextPage($current_page) {
@@ -45,7 +45,7 @@ function goToPreviousPage($current_page) {
 }
 
 function checkPrevPageExists($current_page) {
-    $fileContents = file_get_contents(DIARY_FILE);
+    $fileContents = file_get_contents(DIGITAL_DIARY_FILE);
     $pages = explode(DELIMITER, $fileContents);
 
     if (!isset($pages[$current_page-2])) {
@@ -54,7 +54,7 @@ function checkPrevPageExists($current_page) {
 }
 
 function checkNextPageExists($current_page) {
-    $fileContents = file_get_contents(DIARY_FILE);
+    $fileContents = file_get_contents(DIGITAL_DIARY_FILE);
     $pages = explode(DELIMITER, $fileContents);
 
     if (!isset($pages[$current_page])) {
@@ -63,5 +63,5 @@ function checkNextPageExists($current_page) {
 }
 
 function addDelimiter() {
-    file_put_contents(DIARY_FILE, DELIMITER, FILE_APPEND);
+    file_put_contents(DIGITAL_DIARY_FILE, DELIMITER, FILE_APPEND);
 }
