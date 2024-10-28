@@ -12,8 +12,8 @@ function handleDiary() {
     if (isset($_REQUEST['save_diary'])) {
         try {
             $current_page = $_POST['current_page'];
-            $contend = $_POST['updating_file'];
-            saveDiary($contend);
+            $content = $_POST['updating_file'];
+            saveDiary($content);
             header('Location: '.BASEURL.'?page='.$current_page);
             exit();
         } catch (Exception $e) {

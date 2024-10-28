@@ -1,14 +1,14 @@
 <?php
 require_once "config.php";
 
-function saveDiary($contend) {
+function saveDiary($content) {
     
-    $contend = htmlspecialchars($contend);
+    $content = htmlspecialchars($content);
     $processed_page = processPage(getCurrentPage());
     
     $pages = $processed_page['pages'];
     $updating_index = $processed_page['updating_index'];
-    $pages[$updating_index] = $contend;
+    $pages[$updating_index] = $content;
 
     updateProcessedPage($pages);
 }
