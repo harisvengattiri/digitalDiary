@@ -82,3 +82,11 @@ function checkNextPageExists($current_page) {
 function addDelimiter() {
     file_put_contents(DIGITAL_DIARY_FILE, DELIMITER, FILE_APPEND);
 }
+
+function deleteSelectedPage() {
+    $pages = getDiaryPages();
+    $page_index = getPageIndex(getCurrentPage());
+    unset($pages[$page_index]);
+    $updated_content = prepareDiaryContent($pages);
+    saveDiary($updated_content);
+}
