@@ -48,8 +48,7 @@ function getPageNumber() {
 }
 
 function goToNextPage($current_page) {
-    checkNextPageExists($current_page);
-    return $current_page+1;
+    return checkNextPageExists($current_page) ? $current_page + 1 : $current_page;
 }
 
 function goToPreviousPage($current_page) {
