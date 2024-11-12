@@ -52,8 +52,7 @@ function goToNextPage($current_page) {
 }
 
 function goToPreviousPage($current_page) {
-    checkPrevPageExists($current_page);
-    return $current_page-1;
+    return checkPrevPageExists($current_page) ? $current_page - 1 : $current_page;
 }
 
 function checkPrevPageExists($current_page) {
