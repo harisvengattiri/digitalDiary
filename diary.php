@@ -14,7 +14,7 @@ function getDiaryPages() {
 }
 
 function getPageIndex($current_page) {
-    return $current_page-1;
+    return max(0, $current_page - 1);
 }
 
 function getCurrentPage() {
