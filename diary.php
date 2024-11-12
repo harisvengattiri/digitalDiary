@@ -40,7 +40,7 @@ function saveDiary($updated_content) {
 function getDiaryPageData($current_page) {
     $pages = getDiaryPages();
     $page_index = getPageIndex($current_page);
-    return $pages[$page_index];
+    return $pages[$page_index] ?? '';
 }
 
 function getPageNumber() {
