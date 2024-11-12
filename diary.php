@@ -44,11 +44,7 @@ function getDiaryPageData($current_page) {
 }
 
 function getPageNumber() {
-    if(isset($_GET['page'])) {
-        return $_GET['page'];
-    } else {
-        return 1;
-    }
+    return isset($_GET['page']) ? (int)$_GET['page'] : 1;
 }
 
 function goToNextPage($current_page) {
