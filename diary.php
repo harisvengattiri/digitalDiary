@@ -76,6 +76,9 @@ function addDelimiter() {
 function deleteSelectedPage() {
     $pages = getDiaryPages();
     $page_index = getPageIndex(getCurrentPage());
-    unset($pages[$page_index]);
-    saveDiary(prepareDiaryContent($pages));
+    if (isset($pages[$page_index])) {
+        unset($pages[$page_index]);
+        $pages = array_values($pages);
+        saveDiary(prepareDiaryContent($pages));
+    }
 }
