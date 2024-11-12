@@ -10,8 +10,7 @@ function updatePostedContentToDiaryPages() {
 
 function getDiaryPages() {
     $fileContents = file_get_contents(DIGITAL_DIARY_FILE);
-    $pages = explode(DELIMITER, $fileContents);
-    return $pages;
+    return explode(DELIMITER, $fileContents);
 }
 
 function getPageIndex($current_page) {
@@ -54,14 +53,12 @@ function getPageNumber() {
 
 function goToNextPage($current_page) {
     checkNextPageExists($current_page);
-    $page = $current_page+1;
-    return $page;
+    return $current_page+1;
 }
 
 function goToPreviousPage($current_page) {
     checkPrevPageExists($current_page);
-    $page = $current_page-1;
-    return $page;
+    return $current_page-1;
 }
 
 function checkPrevPageExists($current_page) {
@@ -90,6 +87,5 @@ function deleteSelectedPage() {
     $pages = getDiaryPages();
     $page_index = getPageIndex(getCurrentPage());
     unset($pages[$page_index]);
-    $updated_content = prepareDiaryContent($pages);
-    saveDiary($updated_content);
+    saveDiary(prepareDiaryContent($pages));
 }
