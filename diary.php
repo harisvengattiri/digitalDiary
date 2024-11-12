@@ -29,7 +29,7 @@ function sanitizeInput($input) {
     return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
 }
 
-function prepareDiaryContent($pages) {
+function prepareDiaryContent(array $pages) {
     return implode(DELIMITER, $pages);
 }
 
