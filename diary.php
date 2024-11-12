@@ -56,21 +56,17 @@ function goToPreviousPage($current_page) {
 }
 
 function checkPrevPageExists($current_page) {
-    $fileContents = file_get_contents(DIGITAL_DIARY_FILE);
-    $pages = explode(DELIMITER, $fileContents);
-
-    if (!isset($pages[$current_page-2])) {
-        throw new Exception();
-    }  
+    $pages = getDiaryPages();
+    return isset($pages[$current_page - 2]);
 }
 
 function checkNextPageExists($current_page) {
-    $fileContents = file_get_contents(DIGITAL_DIARY_FILE);
-    $pages = explode(DELIMITER, $fileContents);
-
+    $pages = getDiaryPages();
     if (!isset($pages[$current_page])) {
         addDelimiter();
+        return true;
     }
+    return isset($pages[$current_page]);
 }
 
 function addDelimiter() {
