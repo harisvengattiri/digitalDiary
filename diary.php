@@ -18,7 +18,7 @@ function getPageIndex($current_page) {
 }
 
 function getCurrentPage() {
-    return $_POST['current_page'];
+    return isset($_POST['current_page']) ? (int)$_POST['current_page'] : 1;
 }
 
 function getPostedContent() {
