@@ -5,8 +5,7 @@ function updatePostedContentToDiaryPages() {
     $pages = getDiaryPages();
     $page_index = getPageIndex(getCurrentPage());
     $pages[$page_index] = sanitizeInput(getPostedContent());
-    $updated_content = prepareDiaryContent($pages);
-    saveDiary($updated_content);
+    saveDiary(prepareDiaryContent($pages));
 }
 
 function getDiaryPages() {
