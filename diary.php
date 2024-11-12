@@ -4,7 +4,7 @@ require_once "config.php";
 function updatePostedContentToDiaryPages() {
     $pages = getDiaryPages();
     $page_index = getPageIndex(getCurrentPage());
-    $pages[$page_index] = getPostedContent();
+    $pages[$page_index] = sanitizeInput(getPostedContent());
     $updated_content = prepareDiaryContent($pages);
     saveDiary($updated_content);
 }
@@ -24,7 +24,11 @@ function getCurrentPage() {
 }
 
 function getPostedContent() {
-    return htmlspecialchars($_POST['updating_file']);
+    return $_POST['updating_file'] ?? '';
+}
+
+function sanitizeInput($input) {
+    return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
 }
 
 function prepareDiaryContent($pages) {
