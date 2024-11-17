@@ -1,14 +1,14 @@
 <?php
 require_once "config.php";
 
-function updatePostedContentToDiaryPages() {
-    $pages = getDiaryPages();
+function savePostedContentToDiary() {
+    $pages = loadDiaryPages();
     $page_index = getPageIndex(getCurrentPage());
     $pages[$page_index] = sanitizeInput(getPostedContent());
-    saveDiary(prepareDiaryContent($pages));
+    saveDiary(formatDiaryContent($pages));
 }
 
-function getDiaryPages() {
+function loadDiaryPages() {
     $fileContents = file_get_contents(DIGITAL_DIARY_FILE);
     return explode(DELIMITER, $fileContents);
 }
@@ -29,7 +29,7 @@ function sanitizeInput($input) {
     return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
 }
 
-function prepareDiaryContent(array $pages) {
+function formatDiaryContent(array $pages) {
     return implode(DELIMITER, $pages);
 }
 
@@ -37,8 +37,8 @@ function saveDiary($updated_content) {
     file_put_contents(DIGITAL_DIARY_FILE, $updated_content);
 }
 
-function getDiaryPageData($current_page) {
-    $pages = getDiaryPages();
+function loadDiaryPageContent($current_page) {
+    $pages = loadDiaryPages();
     $page_index = getPageIndex($current_page);
     return $pages[$page_index] ?? '';
 }
@@ -56,12 +56,12 @@ function goToPreviousPage($current_page) {
 }
 
 function checkPrevPageExists($current_page) {
-    $pages = getDiaryPages();
+    $pages = loadDiaryPages();
     return isset($pages[$current_page - 2]);
 }
 
 function checkNextPageExists($current_page) {
-    $pages = getDiaryPages();
+    $pages = loadDiaryPages();
     if (!isset($pages[$current_page])) {
         addDelimiter();
         return true;
@@ -74,11 +74,11 @@ function addDelimiter() {
 }
 
 function deleteSelectedPage() {
-    $pages = getDiaryPages();
+    $pages = loadDiaryPages();
     $page_index = getPageIndex(getCurrentPage());
     if (isset($pages[$page_index])) {
         unset($pages[$page_index]);
         $pages = array_values($pages);
-        saveDiary(prepareDiaryContent($pages));
+        saveDiary(formatDiaryContent($pages));
     }
 }

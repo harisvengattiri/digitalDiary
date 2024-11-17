@@ -12,7 +12,7 @@ function handleDiary() {
     if (isset($_REQUEST['save_diary'])) {
         try {
             $current_page = $_POST['current_page'];
-            updatePostedContentToDiaryPages();
+            savePostedContentToDiary();
             header('Location: '.BASEURL.'?page='.$current_page);
             exit();
         } catch (Exception $e) {

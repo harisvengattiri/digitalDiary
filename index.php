@@ -1,7 +1,7 @@
 <?php
 require_once "diary.php";
 $current_page = getPageNumber();
-$page_data = getDiaryPageData($current_page);
+$page_data = loadDiaryPageContent($current_page);
 
 $diary_template = file_get_contents("diary_template.html");
 
