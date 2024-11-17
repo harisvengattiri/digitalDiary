@@ -2,10 +2,15 @@
 require_once "config.php";
 
 function savePostedContentToDiary() {
+    $pages = updatePageContent();
+    saveDiary(formatDiaryContent($pages));
+}
+
+function updatePageContent() {
     $pages = loadDiaryPages();
     $page_index = getPageIndex(getCurrentPage());
     $pages[$page_index] = sanitizeInput(getPostedContent());
-    saveDiary(formatDiaryContent($pages));
+    return $pages;
 }
 
 function loadDiaryPages() {
